@@ -703,17 +703,12 @@ function showPayment(){
 
     $("orderIdText").innerText = orderId;
 
-    $("qrImage").src =
-
-        "https://promptpay.io/0816202466/"
-
-        +
-
-        paymentAmount.toFixed(2)
-
-        +
-
-        ".png";
+$("qrImage").src =
+    "https://promptpay.io/0816202466/"
+    +
+    paymentAmount
+    +
+    ".png";
 
     $("qrStatus").innerText =
 "✅ QR พร้อมสำหรับชำระเงิน";
@@ -933,7 +928,7 @@ async function submitOrder(){
 
     formData.append(
         "paymentAmount",
-        paymentAmount.toFixed(2)
+         String(paymentAmount)
     );
 
     formData.append(
@@ -1269,16 +1264,11 @@ window.addEventListener("load",()=>{
             orderId;
 
             $("qrImage").src =
-
-            "https://promptpay.io/0816202466/"
-
-            +
-
-            paymentAmount.toFixed(2)
-
-            +
-
-            ".png";
+    "https://promptpay.io/0816202466/"
+    +
+    paymentAmount
+    +
+    ".png";
 
             $("qrStatus").innerText =
 "📌 กู้คืน QR Payment";
