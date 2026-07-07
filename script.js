@@ -1318,22 +1318,11 @@ SAVE QR
 
 const downloadQRBtn = $("downloadQR");
 
-if(downloadQRBtn){
+if (downloadQRBtn) {
 
-    downloadQRBtn.addEventListener("click", ()=>{
+    downloadQRBtn.addEventListener("click", () => {
 
-        const qrImage = $("qrImage");
-
-        if(!qrImage.src){
-
-            alert("ยังไม่มี QR Payment");
-
-            return;
-
-        }
-
-        // เปิดรูป QR ในแท็บใหม่
-        window.open(qrImage.src,"_blank");
+        alert("ฟังก์ชันบันทึก QR ปิดชั่วคราว");
 
     });
 
