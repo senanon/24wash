@@ -1130,6 +1130,28 @@ async function submitOrder(){
 }
 
 /* ==========================================================
+FILE NAME
+========================================================== */
+
+$("paymentSlip").addEventListener("change",function(){
+
+    $("slipName").innerText =
+        this.files.length
+        ? this.files[0].name
+        : "ยังไม่ได้เลือกไฟล์";
+
+});
+
+$("basketImage").addEventListener("change",function(){
+
+    $("basketName").innerText =
+        this.files.length
+        ? this.files[0].name
+        : "ยังไม่ได้เลือกไฟล์";
+
+});
+
+/* ==========================================================
 SUBMIT BUTTON
 ========================================================== */
 
