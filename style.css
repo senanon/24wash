@@ -529,17 +529,19 @@ QR
 
 #qrImage{
 
-    width:240px;
+    width:260px;
 
     max-width:100%;
 
-    border-radius:14px;
+    display:block;
 
-    box-shadow:
-        0 6px 20px rgba(0,0,0,.12);
+    margin:auto;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
 
 }
-
 /* =====================================================
 SUMMARY
 ===================================================== */
