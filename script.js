@@ -721,6 +721,9 @@ function showPayment(){
 
         ".png";
 
+    $("qrStatus").innerText =
+"✅ QR พร้อมสำหรับชำระเงิน";
+
     window.scrollTo({
 
         top:0,
