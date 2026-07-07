@@ -102,103 +102,54 @@ PAYMENT SESSION
 
 function createPaymentSession(){
 
-    orderId =
-    generateOrderId();
+    orderId = generateOrderId();
 
-    paymentId =
-    generatePaymentId();
+    paymentId = generatePaymentId();
 
-    sessionId =
-    generateSessionId();
+    sessionId = generateSessionId();
 
-    createdAt =
-    new Date();
+    createdAt = new Date();
 
-    expireAt =
-    new Date(
-
-        createdAt.getTime()
-
-        +
-
-        QR_EXPIRE_MINUTES
-
-        *
-
-        60000
-
+    expireAt = new Date(
+        createdAt.getTime() +
+        QR_EXPIRE_MINUTES * 60000
     );
 
-    const randomSuffix =
+    // ใช้ยอดจริง ไม่มีการสุ่มทศนิยม
+    paymentAmount = total;
 
-    Math.floor(
-
-        Math.random()*90
-
-    )+10;
-
-paymentAmount = Number(total.toFixed(2));
-
-    const qrFingerprint =
-
-    btoa([
-
+    const qrFingerprint = btoa([
         orderId,
-
         paymentId,
-
         sessionId,
-
-        paymentAmount.toFixed(2),
-
+        String(paymentAmount),
         createdAt.toISOString()
-
     ].join("|"));
 
     localStorage.setItem(
-
         "qrFingerprint",
-
         qrFingerprint
-
     );
 
     localStorage.setItem(
-
         "paymentSession",
-
         JSON.stringify({
-
             orderId,
-
             paymentId,
-
             sessionId,
-
             paymentAmount,
-
             createdAt,
-
             expireAt
-
         })
-
     );
 
     console.log({
-
         orderId,
-
         paymentId,
-
         sessionId,
-
         paymentAmount,
-
         createdAt,
-
         expireAt
-
     });
 
 }
