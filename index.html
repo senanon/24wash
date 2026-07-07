@@ -499,17 +499,24 @@ style="display:none;">
 
 <div class="qr-wrapper">
 
-<img
+    <img
+        id="qrImage"
+        src=""
+        alt="PromptPay QR"
+        loading="lazy">
 
-id="qrImage"
-
-src=""
-
-alt="PromptPay QR"
-
-loading="lazy">
+    <canvas
+        id="qrCanvas"
+        style="display:none;">
+    </canvas>
 
 </div>
+
+<p id="qrStatus" class="qr-tip">
+
+กำลังสร้าง QR Payment...
+
+</p>
 
 <button
 type="button"
