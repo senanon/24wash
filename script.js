@@ -1385,18 +1385,39 @@ const downloadQRBtn = $("downloadQR");
 
 if(downloadQRBtn){
 
-    downloadQRBtn.addEventListener("click",()=>{
+    downloadQRBtn.addEventListener("click", async ()=>{
 
-        alert(
-`📌 วิธีบันทึก QR
+        try{
 
-1. แตะค้างที่รูป QR
-2. เลือก "บันทึกรูปภาพ"
-3. เปิดแอปธนาคาร
-4. สแกนจากรูปภาพ
-5. โอนเงิน
-6. กลับมาหน้านี้เพื่อแนบสลิป`
-        );
+            const response = await fetch($("qrImage").src);
+
+            const blob = await response.blob();
+
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+
+            a.href = url;
+
+            a.download = `${orderId}-QR.png`;
+
+            document.body.appendChild(a);
+
+            a.click();
+
+            document.body.removeChild(a);
+
+            URL.revokeObjectURL(url);
+
+        }
+
+        catch(error){
+
+            alert("ไม่สามารถบันทึก QR ได้");
+
+            console.error(error);
+
+        }
 
     });
 
