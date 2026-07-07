@@ -541,6 +541,16 @@ QR
 
     -webkit-user-drag:none;
 
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+   #qrImage:hover{
+
+    transform:scale(1.03);
+
 }
 /* =====================================================
 SUMMARY
