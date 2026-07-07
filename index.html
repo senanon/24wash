@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<meta name="theme-color" content="#e30000">
+
+<title>24WASH ROJANA</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- =========================================
+HEADER
+========================================= -->
+
+<header class="header">
+
+<div>
+
+<h1>24WASH ROJANA</h1>
+
+<p>ฝากซัก อบ พับ ออนไลน์ พนักงานเริ่มดำเนินการตามรายการฝาก 07:30-17:00น.(งดรับฝากทุกวันอังคาร)</p>
+
+</div>
+
+<div class="badge">
+
+24 ชั่วโมง
+
+</div>
+
+</header>
+
+<!-- =========================================
+ORDER SECTION
+========================================= -->
+
+<div id="orderSection">
+
+<!-- =========================================
+WASH
+========================================= -->
+
+<div class="card">
+
+<h2>เลือกถังซัก</h2>
+
+<div
+id="washGroup"
+class="touch-group">
+
+<button
+type="button"
+class="touch-btn active"
+data-value="9">
+
+9 kg
+
+</button>
+
+<button
+type="button"
+class="touch-btn"
+data-value="14">
+
+14 kg
+
+</button>
+
+<button
+type="button"
+class="touch-btn"
+data-value="18">
+
+18 kg
+
+</button>
+
+<button
+type="button"
+class="touch-btn"
+data-value="27">
+
+27 kg
+
+</button>
+
+</div>
+
+<label>อุณหภูมิน้ำ</label>
+
+<div
+id="waterGroup"
+class="touch-group">
+
+<button
+type="button"
+class="touch-btn active"
+data-value="cold">
+
+น้ำเย็น
+
+</button>
+
+<button
+type="button"
+class="touch-btn"
+data-value="warm">
+
+น้ำอุ่น
+
+</button>
+
+<button
+type="button"
+class="touch-btn"
+data-value="hot">
+
+น้ำร้อน
+
+</button>
+
+</div>
+
+<div class="live-total-box">
+
+<div>
+
+<p class="live-total-label">
+
+ราคาซัก
+
+</p>
+
+<h3 id="washTotalDisplay">
+
+40 บาท
+
+</h3>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================================
+DRYER
+========================================= -->
+
+<div class="card">
+
+<h2>เลือกถังอบ</h2>
+
+<div
+id="dryerGroup"
+class="touch-group">
+
+<button
+type="button"
+class="touch-btn active"
+data-value="0">
+
+ไม่อบ
+
+</button>
+
+<button
+type="button"
+class="touch-btn"
+data-value="14">
+
+14 kg
+<br>
+40 บาท
+
+</button>
+
+<button
+type="button"
+class="touch-btn"
+data-value="25">
+
+25 kg
+<br>
+70 บาท
+
+</button>
+
+</div>
+
+<label>เพิ่มเวลาอบ</label>
+
+<div
+id="extraGroup"
+class="touch-group">
+
+<button
+type="button"
+class="touch-btn active"
+data-value="0">
+
+0 นาที
+
+</button>
+
+<button
+type="button"
+class="touch-btn"
+data-value="6">
+
+6 นาที
+(+10)
+
+</button>
+
+<button
+type="button"
+class="touch-btn"
+data-value="12">
+
+12 นาที
+(+20)
+
+</button>
+
+<button
+type="button"
+class="touch-btn"
+data-value="18">
+
+18 นาที
+(+30)
+
+</button>
+
+<button
+type="button"
+class="touch-btn"
+data-value="24">
+
+24 นาที
+(+40)
+
+</button>
+
+</div>
+
+</div>
+
+<!-- =========================================
+EXTRA
+========================================= -->
+
+<div class="card">
+
+<h2>บริการเพิ่มเติม</h2>
+
+<div class="grid-3">
+
+<div>
+
+<label>
+
+น้ำยาซัก
+(ซองละ 5 บาท)
+
+</label>
+
+<input
+
+id="detergentQty"
+
+type="number"
+
+min="0"
+
+max="20"
+
+step="1"
+
+value="0">
+
+</div>
+
+<div>
+
+<label>
+
+ปรับผ้านุ่ม
+(ซองละ 5 บาท)
+
+</label>
+
+<input
+
+id="softenerQty"
+
+type="number"
+
+min="0"
+
+max="20"
+
+step="1"
+
+value="0">
+
+</div>
+
+<div>
+
+<label>
+
+พับผ้า
+(ตะกร้าละ 20 บาท)
+
+</label>
+
+<input
+
+id="foldQty"
+
+type="number"
+
+min="0"
+
+max="20"
+
+step="1"
+
+value="0">
+
+</div>
+
+</div>
+
+</div>
+
+  <!-- =========================================
+PICKUP
+========================================= -->
+
+<div class="card">
+
+<h2>วันและเวลารับผ้า</h2>
+
+<label>วันที่รับผ้า</label>
+
+<div class="select-wrapper">
+
+<select
+id="pickupDate"
+class="pickup-select"
+required>
+
+<option value="">
+
+เลือกวันที่
+
+</option>
+
+</select>
+
+</div>
+
+<label>เวลารับผ้า</label>
+
+<div class="select-wrapper">
+
+<select
+id="pickupTime"
+class="pickup-select"
+required>
+
+<option value="">
+
+เลือกเวลา
+
+</option>
+
+<option value="16:00">16:00</option>
+<option value="17:00">17:00</option>
+<option value="18:00">18:00</option>
+<option value="19:00">19:00</option>
+<option value="20:00">20:00</option>
+
+</select>
+
+</div>
+
+<label>เบอร์โทรศัพท์</label>
+
+<input
+id="phone"
+type="tel"
+maxlength="10"
+inputmode="numeric"
+autocomplete="tel"
+placeholder="0812345678"
+required>
+
+<label>หมายเหตุ</label>
+
+<textarea
+id="note"
+placeholder="รายละเอียดเพิ่มเติม (ถ้ามี)"></textarea>
+
+</div>
+
+<!-- =========================================
+ORDER INFO
+========================================= -->
+
+<div class="card">
+
+<h2>ข้อมูลออเดอร์</h2>
+
+<p>
+
+เลขออเดอร์
+
+<strong id="orderIdText">-</strong>
+
+</p>
+
+</div>
+
+<!-- =========================================
+SUMMARY
+========================================= -->
+
+<div class="summary-card">
+
+<div class="summary-title">
+
+สรุปรายการ
+
+</div>
+
+<div id="summaryList"></div>
+
+<div class="summary-total">
+
+<div>
+
+<span>
+
+รวมทั้งหมด
+
+</span>
+
+<strong id="totalPrice">
+
+0 บาท
+
+</strong>
+
+</div>
+
+</div>
+
+<button
+
+type="button"
+
+id="confirmBtn">
+
+ยืนยันรายการ
+
+</button>
+
+</div>
+
+</div>
+
+<!-- =========================================
+PAYMENT
+========================================= -->
+
+<div
+id="paymentSection"
+style="display:none;">
+
+<div class="card">
+
+<h2>QR PAYMENT</h2>
+
+<div class="qr-wrapper">
+
+<img
+
+id="qrImage"
+
+src=""
+
+alt="PromptPay QR"
+
+loading="lazy">
+
+</div>
+
+<button
+type="button"
+id="downloadQR"
+class="secondary-btn">
+
+📥 บันทึก QR
+
+</button>
+
+</div>  
+
+<div class="card">
+
+<h2>อัปโหลดไฟล์</h2>
+
+<label>
+
+สลิปการโอน
+
+<p id="slipName">ยังไม่ได้เลือกไฟล์</p>
+
+</label>
+
+<input
+
+id="paymentSlip"
+
+type="file"
+
+accept="image/*"
+
+required>
+
+<label>
+
+รูปตะกร้าผ้า
+
+<p id="basketName">ยังไม่ได้เลือกไฟล์</p>
+
+</label>
+
+<input
+
+id="basketImage"
+
+type="file"
+
+accept="image/*"
+
+</div>
+
+<div class="summary-card">
+
+<button
+
+type="button"
+
+id="submitBtn">
+
+ส่งรายการ
+
+</button>
+
+</div>
+
+</div>
+
+<!-- =========================================
+RECEIPT
+========================================= -->
+
+<div
+id="receiptImage"
+class="receipt-image">
+
+<h2>
+
+24WASH ROJANA
+
+</h2>
+
+<div id="receiptContent"></div>
+
+</div>
+
+<!-- =========================================
+LOADING
+========================================= -->
+
+<div id="loadingOverlay">
+
+<div class="loading-box">
+
+<div class="spinner"></div>
+
+<p>
+
+กำลังส่งรายการ...
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

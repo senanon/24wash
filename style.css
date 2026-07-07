@@ -1,0 +1,959 @@
+/* =====================================================
+   24WASH ROJANA STYLE v2.0
+   Part 1 : Reset + Variables + Layout + Form
+===================================================== */
+
+:root{
+
+    --primary:#e30000;
+    --primary-dark:#b80000;
+    --primary-light:#fff3f3;
+
+    --text:#222;
+    --text-light:#666;
+
+    --border:#dddddd;
+    --background:#f3f3f3;
+
+    --white:#ffffff;
+
+    --shadow:
+        0 12px 30px rgba(0,0,0,.08);
+
+    --shadow-hover:
+        0 18px 40px rgba(0,0,0,.12);
+
+    --radius:22px;
+
+    --transition:.25s ease;
+
+}
+
+/* =====================================================
+RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+    -webkit-text-size-adjust:100%;
+
+}
+
+body{
+
+    font-family:
+        "Segoe UI",
+        sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+
+}
+
+/* =====================================================
+APP
+===================================================== */
+
+.app{
+
+    width:100%;
+    max-width:520px;
+
+    margin:auto;
+
+    padding:
+
+        max(18px,env(safe-area-inset-top))
+        18px
+        max(18px,env(safe-area-inset-bottom));
+
+}
+
+/* =====================================================
+HEADER
+===================================================== */
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+    margin-bottom:24px;
+
+}
+
+.header h1{
+
+    font-size:42px;
+
+    font-weight:900;
+
+    color:var(--primary);
+
+    line-height:1;
+
+}
+
+.header p{
+
+    margin-top:8px;
+
+    font-size:14px;
+
+    color:#777;
+
+    line-height:1.5;
+
+}
+
+.badge{
+
+    background:linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        var(--primary-dark)
+
+    );
+
+    color:white;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    font-weight:800;
+
+    white-space:nowrap;
+
+    box-shadow:
+
+        0 8px 20px rgba(227,0,0,.25);
+
+}
+
+/* =====================================================
+CARD
+===================================================== */
+
+.card,
+.summary-card{
+
+    background:var(--white);
+
+    border-radius:28px;
+
+    padding:22px;
+
+    margin-bottom:18px;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+    overflow:visible;
+
+    position:relative;
+
+}
+
+.card:hover{
+
+    box-shadow:var(--shadow-hover);
+
+}
+
+.summary-card{
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            var(--primary),
+
+            var(--primary-dark)
+
+        );
+
+    color:white;
+
+    position:relative;
+
+    z-index:10;
+
+    pointer-events:auto;
+
+}
+
+h2{
+
+    color:var(--primary);
+
+    font-size:24px;
+
+    margin-bottom:18px;
+
+}
+
+.summary-title{
+
+    font-size:24px;
+
+    font-weight:900;
+
+    margin-bottom:18px;
+
+}
+
+/* =====================================================
+FORM
+===================================================== */
+
+label{
+
+    display:block;
+
+    margin-top:16px;
+
+    margin-bottom:8px;
+
+    font-weight:700;
+
+    color:#555;
+
+}
+
+input,
+textarea,
+select,
+button{
+
+    width:100%;
+
+    border-radius:18px;
+
+    font-size:16px;
+
+    font-family:inherit;
+
+}
+
+input,
+select{
+
+    height:58px;
+
+    padding:0 16px;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    transition:var(--transition);
+
+}
+
+textarea{
+
+    min-height:110px;
+
+    padding:14px 16px;
+
+    resize:none;
+
+    border:1px solid var(--border);
+
+    background:white;
+
+    transition:var(--transition);
+
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:
+
+        0 0 0 4px
+
+        rgba(227,0,0,.15);
+
+}
+
+input[type=file]{
+
+    padding:14px;
+
+    height:auto;
+
+    border:2px dashed #cccccc;
+
+    background:#ffffff;
+
+    color:#222222;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+input[type=file]:hover{
+
+    border-color:var(--primary);
+
+}
+
+.grid-3{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(3,1fr);
+
+    gap:12px;
+
+}
+
+/* =====================================================
+SELECT
+===================================================== */
+
+.select-wrapper{
+
+    position:relative;
+
+}
+
+.select-wrapper::after{
+
+    content:"▼";
+
+    position:absolute;
+
+    right:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    pointer-events:none;
+
+    color:#888;
+
+    font-size:11px;
+
+}
+
+.pickup-select{
+
+    appearance:none;
+
+    -webkit-appearance:none;
+
+    -moz-appearance:none;
+
+    cursor:pointer;
+
+    padding-right:42px;
+
+}
+
+/* =====================================================
+TOUCH BUTTON
+===================================================== */
+
+.touch-group{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+    margin-top:10px;
+
+}
+
+#extraGroup{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+.touch-btn{
+
+    height:58px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#f2f2f2;
+
+    color:#444;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:
+        background .25s,
+        color .25s,
+        transform .15s,
+        box-shadow .25s;
+
+}
+
+.touch-btn:hover{
+
+    background:#ececec;
+
+}
+
+.touch-btn:active{
+
+    transform:scale(.97);
+
+}
+
+.touch-btn.active{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+
+    color:white;
+
+    box-shadow:
+        0 8px 18px rgba(227,0,0,.35);
+
+}
+
+/* =====================================================
+LIVE TOTAL
+===================================================== */
+
+.live-total-box{
+
+    margin-top:22px;
+
+    padding:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-radius:22px;
+
+    background:var(--primary-light);
+
+    border:2px solid #ffd2d2;
+
+}
+
+.live-total-label{
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:#666;
+
+    margin-bottom:6px;
+
+}
+
+#washTotalDisplay{
+
+    font-size:30px;
+
+    font-weight:900;
+
+    color:var(--primary);
+
+}
+
+/* =====================================================
+QR
+===================================================== */
+
+.qr-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    border-radius:22px;
+
+    background:white;
+
+}
+
+#qrImage{
+
+    width:240px;
+
+    max-width:100%;
+
+    border-radius:14px;
+
+    box-shadow:
+        0 6px 20px rgba(0,0,0,.12);
+
+}
+
+/* =====================================================
+SUMMARY
+===================================================== */
+
+#summaryList{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(8px);
+
+    border-radius:18px;
+
+    padding:14px;
+
+}
+
+.summary-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+    padding:12px 0;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.18);
+
+}
+
+.summary-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.summary-item span{
+
+    line-height:1.5;
+
+}
+
+.summary-item strong{
+
+    white-space:nowrap;
+
+}
+
+.summary-total{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:20px;
+
+    gap:15px;
+
+}
+
+.summary-total span{
+
+    display:block;
+
+    font-size:15px;
+
+    margin-bottom:6px;
+
+}
+
+.summary-total strong{
+
+    font-size:28px;
+
+    font-weight:900;
+
+}
+
+/* =====================================================
+BUTTON
+===================================================== */
+
+button{
+
+    height:58px;
+
+    border:none;
+
+    border-radius:18px;
+
+    margin-top:18px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-weight:900;
+
+    transition:all .25s ease;
+
+    -webkit-tap-highlight-color: transparent;
+
+    touch-action: manipulation;
+
+}
+
+#confirmBtn,
+#submitBtn{
+
+    background:white;
+
+    color:var(--primary);
+
+    position:relative;
+
+    z-index:20;
+
+    pointer-events:auto;
+
+}
+
+#confirmBtn:hover,
+#submitBtn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 10px 20px rgba(0,0,0,.15);
+
+}
+
+button:disabled{
+
+    opacity:.5;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+/* =====================================================
+LOADING
+===================================================== */
+
+#loadingOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+        rgba(0,0,0,.75);
+
+    z-index:99999;
+
+    touch-action:none;
+
+}
+
+#loadingOverlay.show{
+
+    display:flex;
+
+}
+
+.loading-box{
+
+    width:260px;
+
+    padding:30px;
+
+    background:white;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    animation:popup .25s ease;
+
+}
+
+.spinner{
+
+    width:56px;
+
+    height:56px;
+
+    margin:auto auto 18px;
+
+    border-radius:50%;
+
+    border:5px solid #eeeeee;
+
+    border-top-color:var(--primary);
+
+    animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes popup{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.92);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* =====================================================
+RECEIPT
+===================================================== */
+
+.receipt-image{
+
+    position:absolute;
+
+    left:-99999px;
+
+    top:0;
+
+    width:420px;
+
+    padding:24px;
+
+    background:white;
+
+    color:#000;
+
+}
+
+.receipt-image h2{
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+}
+
+.receipt-image p{
+    margin:8px 0;
+}
+
+.receipt-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px 0;
+    border-bottom:1px dashed #dddddd;
+    font-size:15px;
+}
+
+.receipt-row:last-child{
+    border-bottom:none;
+}
+
+.receipt-row span{
+    color:#333;
+}
+
+.receipt-row strong{
+    color:#d60000;
+    font-weight:700;
+}
+
+/* =====================================================
+SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:999px;
+
+}
+
+/* =====================================================
+MOBILE
+===================================================== */
+
+@media (max-width:600px){
+
+    .header{
+
+        flex-direction:column;
+
+        gap:14px;
+
+    }
+
+    .badge{
+
+        align-self:flex-start;
+
+    }
+
+    .header h1{
+
+        font-size:34px;
+
+    }
+
+    .grid-3{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .touch-group{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+    .touch-btn{
+
+        font-size:14px;
+
+    }
+
+    button{
+
+        font-size:16px;
+
+    }
+
+    #washTotalDisplay{
+
+        font-size:26px;
+
+    }
+
+}
+
+/* =====================================================
+DARK MODE
+===================================================== */
+
+@media (prefers-color-scheme: dark){
+
+    body{
+        background:#121212;
+        color:#f2f2f2;
+    }
+
+    .card{
+        background:#1d1d1d;
+    }
+
+    input,
+    textarea,
+    select{
+        background:#2a2a2a;
+        color:#ffffff;
+        border-color:#444444;
+    }
+
+    input[type=file]{
+        background:#ffffff;
+        color:#222222;
+    }
+
+    .touch-btn{
+        background:#2b2b2b;
+        color:#f2f2f2;
+    }
+
+    .touch-btn.active{
+        background:linear-gradient(135deg,#e30000,#b80000);
+        color:#ffffff;
+    }
+
+    .live-total-box{
+        background:#2b1b1b;
+        border-color:#5a2a2a;
+    }
+
+}
