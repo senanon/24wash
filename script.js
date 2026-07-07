@@ -137,13 +137,7 @@ function createPaymentSession(){
 
     )+10;
 
-    paymentAmount =
-
-    Number(
-
-        `${total}.${randomSuffix}`
-
-    );
+paymentAmount = Number(total.toFixed(2));
 
     const qrFingerprint =
 
