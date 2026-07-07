@@ -1286,6 +1286,9 @@ window.addEventListener("load",()=>{
 
             ".png";
 
+            $("qrStatus").innerText =
+"📌 กู้คืน QR Payment";
+
         }
 
         else{
