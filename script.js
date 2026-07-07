@@ -1318,16 +1318,37 @@ SAVE QR
 
 const downloadQRBtn = $("downloadQR");
 
-if (downloadQRBtn) {
+if(downloadQRBtn){
 
-    downloadQRBtn.addEventListener("click", () => {
+    downloadQRBtn.addEventListener("click", ()=>{
 
-        alert("ฟังก์ชันบันทึก QR ปิดชั่วคราว");
+        const qr = $("qrImage");
+
+        if(!qr || !qr.src){
+
+            alert("ยังไม่มี QR Payment");
+
+            return;
+
+        }
+
+        // LINE Browser
+        if(/Line/i.test(navigator.userAgent)){
+
+            alert(
+                "LINE ไม่รองรับการบันทึก QR อัตโนมัติ\n\nกรุณาแตะค้างที่รูป QR แล้วเลือก 'บันทึกรูปภาพ'"
+            );
+
+            return;
+
+        }
+
+        // Chrome / Browser อื่น
+        window.open(qr.src,"_blank");
 
     });
 
 }
-
 /* ==========================================================
 END
 ========================================================== */
