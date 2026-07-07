@@ -1385,39 +1385,20 @@ const downloadQRBtn = $("downloadQR");
 
 if(downloadQRBtn){
 
-    downloadQRBtn.addEventListener("click", async ()=>{
+    downloadQRBtn.addEventListener("click", ()=>{
 
-        try{
+        const qrImage = $("qrImage");
 
-            const response = await fetch($("qrImage").src);
+        if(!qrImage.src){
 
-            const blob = await response.blob();
+            alert("ยังไม่มี QR Payment");
 
-            const url = URL.createObjectURL(blob);
-
-            const a = document.createElement("a");
-
-            a.href = url;
-
-            a.download = `${orderId}-QR.png`;
-
-            document.body.appendChild(a);
-
-            a.click();
-
-            document.body.removeChild(a);
-
-            URL.revokeObjectURL(url);
+            return;
 
         }
 
-        catch(error){
-
-            alert("ไม่สามารถบันทึก QR ได้");
-
-            console.error(error);
-
-        }
+        // เปิดรูป QR ในแท็บใหม่
+        window.open(qrImage.src,"_blank");
 
     });
 
