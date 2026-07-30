@@ -657,11 +657,16 @@ function showPayment(){
 
     qrBox.innerHTML = "";
 
-    new QRCode(qrBox,{
-        text:"24WASH TEST\n"+paymentAmount,
-        width:260,
-        height:260
-    });
+    const payload = generatePromptPayPayload(
+    "0816202466",
+    paymentAmount
+);
+
+new QRCode(qrBox,{
+    text:payload,
+    width:260,
+    height:260
+});
 
     $("qrStatus").innerText =
         "✅ QR พร้อมสำหรับชำระเงิน";
