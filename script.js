@@ -650,6 +650,10 @@ function showPayment(){
 
     $("paymentSection").style.display = "block";
 
+    $("uploadSection").style.display = "none";
+    
+    $("paidBtn").style.display = "block";
+
     $("orderIdText").innerText = orderId;
 
     // ===== สร้าง QR =====
@@ -675,15 +679,21 @@ img.onload = function () {
     $("qrStatus").innerText =
         "✅ QR พร้อมสำหรับชำระเงิน";
 
-};
-
     $("paidBtn").onclick = () => {
 
-    $("uploadSection").style.display = "block";
+        $("uploadSection").style.display = "block";
 
-    $("paidBtn").style.display = "none";
+        $("paidBtn").style.display = "none";
 
-    document
+        $("uploadSection").scrollIntoView({
+            behavior: "smooth"
+        });
+
+    };
+
+};
+
+      document
         .getElementById("uploadSection")
         .scrollIntoView({
             behavior:"smooth"
@@ -694,16 +704,6 @@ img.onload = function () {
 img.onerror = () => {
     $("qrStatus").innerText = "❌ ไม่สามารถสร้าง QR ได้";
 };
-
-// ===== ดาวน์โหลด QR =====
-$("downloadQR").onclick = () => {
-
-    window.open(img.src, "_blank");
-
-};
-
-$("qrStatus").innerText =
-    "✅ QR พร้อมสำหรับชำระเงิน";
 
     window.scrollTo({
 
