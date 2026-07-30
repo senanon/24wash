@@ -670,8 +670,11 @@ $("paymentAmountText").innerText =
 
 qrBox.appendChild(img);
 
-img.onload = () => {
-    $("qrStatus").innerText = "✅ QR พร้อมสำหรับชำระเงิน";
+img.onload = function () {
+
+    $("qrStatus").innerText =
+        "✅ QR พร้อมสำหรับชำระเงิน";
+
 };
 
 img.onerror = () => {
