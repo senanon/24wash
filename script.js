@@ -653,20 +653,26 @@ function showPayment(){
     $("orderIdText").innerText = orderId;
 
     // ===== สร้าง QR =====
-    const qrBox = $("qrContainer");
+ const qrBox = $("qrContainer");
 
-    qrBox.innerHTML = "";
+qrBox.innerHTML = "";
 
-    const payload = generatePromptPayPayload(
-    "0816202466",
-    paymentAmount
-);
+const img = document.createElement("img");
 
-new QRCode(qrBox,{
-    text:payload,
-    width:260,
-    height:260
-});
+img.width = 260;
+img.height = 260;
+img.alt = "PromptPay QR";
+img.src = `https://promptpay.io/0816202466/${paymentAmount}.png`;
+
+qrBox.appendChild(img);
+
+img.onload = () => {
+    $("qrStatus").innerText = "✅ QR พร้อมสำหรับชำระเงิน";
+};
+
+img.onerror = () => {
+    $("qrStatus").innerText = "❌ ไม่สามารถสร้าง QR ได้";
+};
 
     $("qrStatus").innerText =
         "✅ QR พร้อมสำหรับชำระเงิน";
