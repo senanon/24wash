@@ -517,8 +517,6 @@ QR
 
     justify-content:center;
 
-    align-items:center;
-
     padding:20px;
 
     border-radius:22px;
@@ -527,7 +525,7 @@ QR
 
 }
 
-#qrImage{
+.qr-image{
 
     width:260px;
 
@@ -547,7 +545,7 @@ QR
 
 }
 
-   #qrImage:hover{
+.qr-image:hover{
 
     transform:scale(1.03);
 
