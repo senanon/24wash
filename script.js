@@ -639,9 +639,7 @@ SHOW QR PAYMENT
 function showPayment(){
 
     if(!validateOrder()){
-
         return;
-
     }
 
     createPaymentSession();
@@ -654,15 +652,19 @@ function showPayment(){
 
     $("orderIdText").innerText = orderId;
 
-$("qrImage").src =
-    "https://promptpay.io/0816202466/"
-    +
-    paymentAmount
-    +
-    ".png";
+    // ===== สร้าง QR =====
+    const qrBox = $("qrContainer");
+
+    qrBox.innerHTML = "";
+
+    new QRCode(qrBox,{
+        text:"24WASH TEST\n"+paymentAmount,
+        width:260,
+        height:260
+    });
 
     $("qrStatus").innerText =
-"✅ QR พร้อมสำหรับชำระเงิน";
+        "✅ QR พร้อมสำหรับชำระเงิน";
 
     window.scrollTo({
 
