@@ -981,3 +981,65 @@ DARK MODE
     display:block;
     margin:0 auto 20px;
 }
+
+.shop-name{
+
+    text-align:center;
+
+    color:#d60000;
+
+    margin-top:15px;
+
+}
+
+.payment-title{
+
+    text-align:center;
+
+    margin-top:15px;
+
+    color:#666;
+
+}
+
+.payment-amount{
+
+    text-align:center;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    margin:10px 0;
+
+}
+
+.order-text{
+
+    text-align:center;
+
+    font-size:16px;
+
+    color:#444;
+
+}
+
+.payment-note{
+
+    text-align:center;
+
+    color:#666;
+
+    line-height:1.6;
+
+    margin:20px;
+
+}
+
+#paidBtn{
+
+    width:100%;
+
+    margin-top:20px;
+
+}
