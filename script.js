@@ -653,29 +653,49 @@ function showPayment(){
     $("orderIdText").innerText = orderId;
 
     // ===== สร้าง QR =====
- const qrBox = $("qrContainer");
-
+const qrBox = $("qrContainer");
 qrBox.innerHTML = "";
+
+$("qrStatus").innerText = "กำลังสร้าง QR...";
 
 const img = document.createElement("img");
 
+img.src = `https://promptpay.io/0816202466/${paymentAmount}.png`;
 img.width = 260;
 img.height = 260;
 img.alt = "PromptPay QR";
-img.src = `https://promptpay.io/0816202466/${paymentAmount}.png`;
-
-qrBox.appendChild(img);
 
 img.onload = () => {
+
     $("qrStatus").innerText = "✅ QR พร้อมสำหรับชำระเงิน";
+
+    $("downloadQR").style.display = "inline-block";
+
 };
 
 img.onerror = () => {
+
     $("qrStatus").innerText = "❌ ไม่สามารถสร้าง QR ได้";
+
+    $("downloadQR").style.display = "none";
+
 };
 
-    $("qrStatus").innerText =
-        "✅ QR พร้อมสำหรับชำระเงิน";
+qrBox.appendChild(img);
+
+// ปุ่มดาวน์โหลด
+$("downloadQR").onclick = () => {
+
+    const a = document.createElement("a");
+
+    a.href = img.src;
+    a.download = `PromptPay_${orderId}.png`;
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+};
 
     window.scrollTo({
 
