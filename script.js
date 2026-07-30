@@ -677,6 +677,20 @@ img.onload = function () {
 
 };
 
+    $("paidBtn").onclick = () => {
+
+    $("uploadSection").style.display = "block";
+
+    $("paidBtn").style.display = "none";
+
+    document
+        .getElementById("uploadSection")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+};
+
 img.onerror = () => {
     $("qrStatus").innerText = "❌ ไม่สามารถสร้าง QR ได้";
 };
