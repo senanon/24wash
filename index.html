@@ -491,15 +491,15 @@ PAYMENT SECTION
 
 <div id="paymentSection" style="display:none;">
 
-    <!-- =========================
-         PAYMENT CARD
-    ========================== -->
+    <!-- PAYMENT CARD -->
     <div class="card">
 
         <h2>QR PAYMENT</h2>
 
         <div class="qr-wrapper">
+
             <div id="qrContainer"></div>
+
         </div>
 
         <h3 class="shop-name">
@@ -511,68 +511,122 @@ PAYMENT SECTION
         </p>
 
         <p class="payment-amount">
-            <strong id="paymentAmountText">0.00</strong> บาท
+
+            <strong id="paymentAmountText">
+                0.00
+            </strong>
+
+            บาท
+
         </p>
 
         <p class="order-text">
+
             Order :
-            <strong id="orderIdText">-</strong>
+
+            <strong id="orderIdText">
+                -
+            </strong>
+
         </p>
 
-        <p class="payment-note">
-            กรุณาเปิดแอปธนาคาร<br>
-            แล้วสแกน QR Code นี้เพื่อชำระเงิน
+        <p id="qrStatus" class="qr-status">
+
+            กำลังสร้าง QR...
+
         </p>
+
+        <!-- Download QR -->
 
         <button
-            id="paidBtn"
             type="button"
+            id="downloadQR"
+            class="btn btn-primary">
+
+            📥 ดาวน์โหลด QR
+
+        </button>
+
+        <!-- Payment Guide -->
+
+        <div class="payment-guide">
+
+            <h3>วิธีชำระเงิน</h3>
+
+            <ol>
+
+                <li>กด "ดาวน์โหลด QR"</li>
+
+                <li>เปิดแอป Mobile Banking</li>
+
+                <li>เลือก "สแกนจากรูปภาพ"</li>
+
+                <li>เลือก QR ที่ดาวน์โหลด</li>
+
+                <li>ชำระเงิน</li>
+
+                <li>บันทึกสลิป</li>
+
+                <li>กลับมาอัปโหลดสลิป</li>
+
+            </ol>
+
+        </div>
+
+        <button
+            type="button"
+            id="paidBtn"
             class="btn btn-success">
 
             ✅ ชำระเงินแล้ว
 
         </button>
 
-        <p id="qrStatus" class="qr-status">
-            กำลังสร้าง QR...
-        </p>
-
     </div>
 
-    <!-- =========================
-         UPLOAD CARD
-    ========================== -->
+    <!-- Upload -->
+
     <div
-        class="card"
         id="uploadSection"
+        class="card"
         style="display:none;">
 
-        <h2>อัปโหลดไฟล์</h2>
+        <h2>อัปโหลดหลักฐาน</h2>
 
         <!-- Slip -->
-        <label for="paymentSlip">
-            สลิปการโอน
-        </label>
 
-        <p id="slipName">
-            ยังไม่ได้เลือกไฟล์
-        </p>
+        <label for="paymentSlip">
+
+            สลิปการโอนเงิน
+
+        </label>
 
         <input
             id="paymentSlip"
             type="file"
             accept="image/*"
-            capture="environment"
-            required>
+            capture="environment">
+
+        <p id="slipName">
+
+            ยังไม่ได้เลือกไฟล์
+
+        </p>
+
+        <img
+            id="slipPreview"
+            class="preview-image"
+            style="display:none;">
+
+        <hr>
 
         <!-- Basket -->
-        <label for="basketImage">
-            รูปตะกร้าผ้า
-        </label>
 
-        <p id="basketName">
-            ยังไม่ได้เลือกไฟล์
-        </p>
+        <label for="basketImage">
+
+            รูปตะกร้าผ้า
+
+        </label>
 
         <input
             id="basketImage"
@@ -580,19 +634,29 @@ PAYMENT SECTION
             accept="image/*"
             capture="environment">
 
+        <p id="basketName">
+
+            ยังไม่ได้เลือกไฟล์
+
+        </p>
+
+        <img
+            id="basketPreview"
+            class="preview-image"
+            style="display:none;">
+
     </div>
 
-    <!-- =========================
-         SUBMIT
-    ========================== -->
+    <!-- Submit -->
+
     <div class="summary-card">
 
         <button
-            type="button"
             id="submitBtn"
-            class="btn btn-primary">
+            type="button"
+            class="btn btn-danger">
 
-            ส่งรายการ
+            📤 ส่งรายการ
 
         </button>
 
