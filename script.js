@@ -664,6 +664,9 @@ img.height = 260;
 img.alt = "PromptPay QR";
 img.src = `https://promptpay.io/0816202466/${paymentAmount}.png`;
 
+$("paymentAmountText").innerText =
+    Number(paymentAmount).toFixed(2);
+
 qrBox.appendChild(img);
 
 img.onload = () => {
