@@ -1333,44 +1333,6 @@ setInterval(()=>{
 },60000);
 
 /* ==========================================================
-SAVE QR
-========================================================== */
-
-const downloadQRBtn = $("downloadQR");
-
-if(downloadQRBtn){
-
-    downloadQRBtn.addEventListener("click", ()=>{
-
-        const qr = $("qrImage");
-
-        if(!qr || !qr.src){
-
-            alert("ยังไม่มี QR Payment");
-
-            return;
-
-        }
-
-        // LINE Browser
-        if(/Line/i.test(navigator.userAgent)){
-
-            alert(
-                "LINE ไม่รองรับการบันทึก QR อัตโนมัติ\n\nกรุณาแตะค้างที่รูป QR แล้วเลือก 'บันทึกรูปภาพ'"
-            );
-
-            return;
-
-        }
-
-        // Chrome / Browser อื่น
-        window.open(qr.src,"_blank");
-
-    });
-
-}
-
-/* ==========================================================
 CLICK QR IMAGE
 ========================================================== */
 
