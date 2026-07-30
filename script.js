@@ -681,8 +681,15 @@ img.onerror = () => {
     $("qrStatus").innerText = "❌ ไม่สามารถสร้าง QR ได้";
 };
 
-    $("qrStatus").innerText =
-        "✅ QR พร้อมสำหรับชำระเงิน";
+// ===== ดาวน์โหลด QR =====
+$("downloadQR").onclick = () => {
+
+    window.open(img.src, "_blank");
+
+};
+
+$("qrStatus").innerText =
+    "✅ QR พร้อมสำหรับชำระเงิน";
 
     window.scrollTo({
 
