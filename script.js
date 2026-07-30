@@ -633,53 +633,77 @@ function saveOrderData(){
 }
 
 /* ==========================================================
-SHOW QR PAYMENT
+   SHOW QR PAYMENT
 ========================================================== */
+function showPayment() {
 
-function showPayment(){
-
-    if(!validateOrder()){
+    // ตรวจสอบข้อมูล
+    if (!validateOrder()) {
         return;
     }
 
+    // สร้างข้อมูล Order
     createPaymentSession();
-
     saveOrderData();
 
+    // แสดงหน้า Payment
     $("orderSection").style.display = "none";
-
     $("paymentSection").style.display = "block";
 
+    // ซ่อนส่วนอัปโหลดก่อน
     $("uploadSection").style.display = "none";
-    
+
+    // แสดงปุ่มชำระเงินแล้ว
     $("paidBtn").style.display = "block";
 
+    // แสดง Order ID
     $("orderIdText").innerText = orderId;
 
-    // ===== สร้าง QR =====
- const qrBox = $("qrContainer");
+    // แสดงยอดเงิน
+    $("paymentAmountText").innerText =
+        Number(paymentAmount).toFixed(2);
 
-qrBox.innerHTML = "";
+    // สถานะเริ่มต้น
+    $("qrStatus").innerText = "กำลังสร้าง QR...";
 
-const img = document.createElement("img");
+    // =========================
+    // สร้าง QR PromptPay
+    // =========================
+    const qrBox = $("qrContainer");
+    qrBox.innerHTML = "";
 
-img.className = "qr-image";
-img.width = 260;
-img.height = 260;
-img.alt = "PromptPay QR";
-img.src = `https://promptpay.io/0816202466/${paymentAmount}.png`;
+    const img = document.createElement("img");
 
-$("paymentAmountText").innerText =
-    Number(paymentAmount).toFixed(2);
+    img.className = "qr-image";
+    img.width = 260;
+    img.height = 260;
+    img.alt = "PromptPay QR";
 
-qrBox.appendChild(img);
+    img.src =
+        `https://promptpay.io/0816202466/${paymentAmount}.png`;
 
-img.onload = function () {
+    // โหลดสำเร็จ
+    img.onload = function () {
 
-    $("qrStatus").innerText =
-        "✅ QR พร้อมสำหรับชำระเงิน";
+        $("qrStatus").innerText =
+            "✅ QR พร้อมสำหรับชำระเงิน";
 
-    $("paidBtn").onclick = () => {
+    };
+
+    // โหลดไม่สำเร็จ
+    img.onerror = function () {
+
+        $("qrStatus").innerText =
+            "❌ ไม่สามารถสร้าง QR ได้";
+
+    };
+
+    qrBox.appendChild(img);
+
+    // =========================
+    // ปุ่ม "ชำระเงินแล้ว"
+    // =========================
+    $("paidBtn").onclick = function () {
 
         $("uploadSection").style.display = "block";
 
@@ -691,62 +715,21 @@ img.onload = function () {
 
     };
 
-};
+    // เลื่อนไปด้านบน
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
-      document
-        .getElementById("uploadSection")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+    // Debug
+    console.log({
+        orderId,
+        paymentId,
+        sessionId,
+        paymentAmount
+    });
 
-};
-
-img.onload = function () {
-
-    $("qrStatus").innerText =
-        "✅ QR พร้อมสำหรับชำระเงิน";
-
-    $("paidBtn").onclick = () => {
-
-        $("uploadSection").style.display = "block";
-
-        $("paidBtn").style.display = "none";
-
-        $("uploadSection").scrollIntoView({
-            behavior: "smooth"
-        });
-
-    };
-
-};
-
-img.onerror = () => {
-
-    $("qrStatus").innerText =
-        "❌ ไม่สามารถสร้าง QR ได้";
-
-};
-
-window.scrollTo({
-
-    top:0,
-
-    behavior:"smooth"
-
-});
-
-console.log({
-
-    orderId,
-
-    paymentId,
-
-    sessionId,
-
-    paymentAmount
-
-});
-
+}
 /* ==========================================================
 CONFIRM BUTTON
 ========================================================== */
