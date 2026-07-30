@@ -659,6 +659,7 @@ qrBox.innerHTML = "";
 
 const img = document.createElement("img");
 
+img.className = "qr-image";
 img.width = 260;
 img.height = 260;
 img.alt = "PromptPay QR";
