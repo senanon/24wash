@@ -701,31 +701,51 @@ img.onload = function () {
 
 };
 
-img.onerror = () => {
-    $("qrStatus").innerText = "❌ ไม่สามารถสร้าง QR ได้";
+img.onload = function () {
+
+    $("qrStatus").innerText =
+        "✅ QR พร้อมสำหรับชำระเงิน";
+
+    $("paidBtn").onclick = () => {
+
+        $("uploadSection").style.display = "block";
+
+        $("paidBtn").style.display = "none";
+
+        $("uploadSection").scrollIntoView({
+            behavior: "smooth"
+        });
+
+    };
+
 };
 
-    window.scrollTo({
+img.onerror = () => {
 
-        top:0,
+    $("qrStatus").innerText =
+        "❌ ไม่สามารถสร้าง QR ได้";
 
-        behavior:"smooth"
+};
 
-    });
+window.scrollTo({
 
-    console.log({
+    top:0,
 
-        orderId,
+    behavior:"smooth"
 
-        paymentId,
+});
 
-        sessionId,
+console.log({
 
-        paymentAmount
+    orderId,
 
-    });
+    paymentId,
 
-}
+    sessionId,
+
+    paymentAmount
+
+});
 
 /* ==========================================================
 CONFIRM BUTTON
