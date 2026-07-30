@@ -635,6 +635,7 @@ function saveOrderData(){
 /* ==========================================================
    SHOW QR PAYMENT
 ========================================================== */
+
 function showPayment() {
 
     // ตรวจสอบข้อมูล
@@ -642,67 +643,107 @@ function showPayment() {
         return;
     }
 
-    // สร้างข้อมูล Order
+    // สร้างข้อมูล
     createPaymentSession();
     saveOrderData();
 
-    // แสดงหน้า Payment
+    // เปลี่ยนหน้า
     $("orderSection").style.display = "none";
     $("paymentSection").style.display = "block";
 
-    // ซ่อนส่วนอัปโหลดก่อน
     $("uploadSection").style.display = "none";
-
-    // แสดงปุ่มชำระเงินแล้ว
     $("paidBtn").style.display = "block";
 
-    // แสดง Order ID
+    // แสดงข้อมูล
     $("orderIdText").innerText = orderId;
-
-    // แสดงยอดเงิน
     $("paymentAmountText").innerText =
         Number(paymentAmount).toFixed(2);
 
-    // สถานะเริ่มต้น
-    $("qrStatus").innerText = "กำลังสร้าง QR...";
+    $("qrStatus").innerText =
+        "กำลังสร้าง QR...";
 
-    // =========================
-    // สร้าง QR PromptPay
-    // =========================
+    // =============================
+    // QR IMAGE
+    // =============================
+
+    const qrUrl =
+        `https://promptpay.io/0816202466/${paymentAmount}.png`;
+
     const qrBox = $("qrContainer");
+
     qrBox.innerHTML = "";
 
     const img = document.createElement("img");
 
+    img.src = qrUrl;
     img.className = "qr-image";
     img.width = 260;
     img.height = 260;
     img.alt = "PromptPay QR";
 
-    img.src =
-        `https://promptpay.io/0816202466/${paymentAmount}.png`;
-
-    // โหลดสำเร็จ
     img.onload = function () {
 
-        $("qrStatus").innerText =
-            "✅ QR พร้อมสำหรับชำระเงิน";
+        $("qrStatus").innerHTML =
+            "✅ QR พร้อมใช้งาน";
 
     };
 
-    // โหลดไม่สำเร็จ
     img.onerror = function () {
 
-        $("qrStatus").innerText =
-            "❌ ไม่สามารถสร้าง QR ได้";
+        $("qrStatus").innerHTML =
+            "❌ ไม่สามารถโหลด QR ได้";
 
     };
 
     qrBox.appendChild(img);
 
-    // =========================
-    // ปุ่ม "ชำระเงินแล้ว"
-    // =========================
+    // =============================
+    // DOWNLOAD QR
+    // =============================
+
+    $("downloadQR").onclick = async function () {
+
+        try {
+
+            const response =
+                await fetch(qrUrl);
+
+            const blob =
+                await response.blob();
+
+            const url =
+                URL.createObjectURL(blob);
+
+            const a =
+                document.createElement("a");
+
+            a.href = url;
+
+            a.download =
+                `24WASH_${orderId}.png`;
+
+            document.body.appendChild(a);
+
+            a.click();
+
+            a.remove();
+
+            URL.revokeObjectURL(url);
+
+        } catch (err) {
+
+            alert("ไม่สามารถดาวน์โหลด QR ได้");
+
+            console.error(err);
+
+        }
+
+    };
+
+    // =============================
+    // PAID BUTTON
+    // =============================
+
     $("paidBtn").onclick = function () {
 
         $("uploadSection").style.display = "block";
@@ -710,23 +751,61 @@ function showPayment() {
         $("paidBtn").style.display = "none";
 
         $("uploadSection").scrollIntoView({
+
             behavior: "smooth"
+
         });
 
     };
 
-    // เลื่อนไปด้านบน
+    // =============================
+    // FILE NAME
+    // =============================
+
+    $("paymentSlip").onchange = function () {
+
+        if (this.files.length > 0) {
+
+            $("slipName").innerText =
+                this.files[0].name;
+
+        }
+
+    };
+
+    $("basketImage").onchange = function () {
+
+        if (this.files.length > 0) {
+
+            $("basketName").innerText =
+                this.files[0].name;
+
+        }
+
+    };
+
+    // =============================
+    // TOP
+    // =============================
+
     window.scrollTo({
+
         top: 0,
+
         behavior: "smooth"
+
     });
 
-    // Debug
     console.log({
+
         orderId,
+
         paymentId,
+
         sessionId,
+
         paymentAmount
+
     });
 
 }
