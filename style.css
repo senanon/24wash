@@ -970,76 +970,62 @@ DARK MODE
 
 /* ===== PAYMENT ===== */
 
-.payment-amount{
-    text-align:center;
-    font-size:20px;
-    font-weight:bold;
-    margin:20px 0;
-}
-
-#downloadQR{
-    display:block;
-    margin:0 auto 20px;
-}
-
 .shop-name{
-
     text-align:center;
-
     color:#d60000;
-
     margin-top:15px;
-
+    font-weight:bold;
 }
 
 .payment-title{
-
     text-align:center;
-
-    margin-top:15px;
-
     color:#666;
-
+    margin-top:15px;
 }
 
 .payment-amount{
-
     text-align:center;
-
     font-size:30px;
-
     font-weight:bold;
-
     margin:10px 0;
-
 }
 
 .order-text{
-
     text-align:center;
-
     font-size:16px;
-
     color:#444;
-
 }
 
 .payment-note{
-
     text-align:center;
-
     color:#666;
-
     line-height:1.6;
-
     margin:20px;
+    font-size:15px;
+}
 
+.qr-status{
+    text-align:center;
+    font-size:16px;
+    font-weight:bold;
+    color:#16a34a;
+    margin-top:15px;
+}
+
+.qr-image{
+    width:260px;
+    max-width:100%;
+    display:block;
+    margin:auto;
+    border-radius:12px;
+    user-select:none;
+    -webkit-user-drag:none;
 }
 
 #paidBtn{
-
     width:100%;
-
     margin-top:20px;
-
+    padding:14px;
+    font-size:18px;
+    font-weight:bold;
 }
