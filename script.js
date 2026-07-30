@@ -697,48 +697,24 @@ function showPayment() {
 
     qrBox.appendChild(img);
 
-    // =============================
-    // DOWNLOAD QR
-    // =============================
+// =============================
+// DOWNLOAD QR
+// =============================
 
-    $("downloadQR").onclick = async function () {
+$("downloadQR").onclick = function () {
 
-        try {
+    const link = document.createElement("a");
 
-            const response =
-                await fetch(qrUrl);
+    link.href = qrUrl;
+    link.target = "_blank";
 
-            const blob =
-                await response.blob();
+    document.body.appendChild(link);
 
-            const url =
-                URL.createObjectURL(blob);
+    link.click();
 
-            const a =
-                document.createElement("a");
+    document.body.removeChild(link);
 
-            a.href = url;
-
-            a.download =
-                `24WASH_${orderId}.png`;
-
-            document.body.appendChild(a);
-
-            a.click();
-
-            a.remove();
-
-            URL.revokeObjectURL(url);
-
-        } catch (err) {
-
-            alert("ไม่สามารถดาวน์โหลด QR ได้");
-
-            console.error(err);
-
-        }
-
-    };
+};
 
     // =============================
     // PAID BUTTON
